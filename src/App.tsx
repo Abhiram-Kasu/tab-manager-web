@@ -5,17 +5,29 @@ import './App.css'
 import Login from './components/Login'
 import { Container } from 'react-bootstrap'
  import "react-toastify/dist/ReactToastify.css";
+ import {
+  BrowserRouter,
+  Routes, //replaces "Switch" used till v5
+  Route,
+} from "react-router-dom";
+import SignUp from './components/SignUp'
+import { MainPage } from './components/MainPage'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <Container className='align-items-center d-flex justify-content-center' style={{minHeight : '100vh'}}>
-      <div className="w-100" style={{maxWidth : '400px'}}> 
-        <Login/>
-      </div>
+    <BrowserRouter>
+     
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<MainPage />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
       
-    </Container>
+        
+      </BrowserRouter>
+    
   )
 }
 
